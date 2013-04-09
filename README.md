@@ -7,21 +7,21 @@ The idea is that the UI is composed of "views". Each view has a view id and
 view ids are dynamically resolved to web components by view resolver defined
 in the configuration. Views can be nested, allowing composition.
 
-    -------------------
+    +-----------------+
     | aaa             |
-    | --------------- |
+    | +-------------+ |
     | | bbb         | |
-    | | ----- ----- | |
+    | | +---+ +---+ | |
     | | |ccc| |ddd| | |
-    | | ----- ----- | |
-    | --------------- |
-    -------------------
+    | | +---+ +---+ | |
+    | +-------------+ |
+    +-----------------+
 
 At the root of all views (the entry point into the view hierarchy) there is 
 a root-view which contains the configuration and also resolves the first view.
 
 ```dart
-<x-root-view config="{{config}}" history-bound="{{true}}"></x-root-view>
+  <x-root-view config="{{config}}" history-bound="{{true}}"></x-root-view>
 ```
 
 Sample config:
