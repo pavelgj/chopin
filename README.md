@@ -89,3 +89,6 @@ token 'bar' will be passed to 'bbb'. And so on.
 If view 'bbb' calls setToken('baz') then the URL will automatically update to
 /aaa/foo/baz. If view 'aaa' setToken('auz') then the URL will automatically update
 to '/aaa/aux'. Setting history token in the middle of the view stack strips the tail.
+
+See the [sample app](https://github.com/pavelgj/chopin/tree/master/sample_app) for more comprehensive,
+close to real-world application examples.
