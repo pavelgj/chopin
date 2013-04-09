@@ -1,5 +1,5 @@
-name: Chopin_experimental
-description: A sample WebUI application
+name: chopin
+description: routing, hierarchical deep-linking and view composition framework
 dependencies:
   browser: any
   js: any
