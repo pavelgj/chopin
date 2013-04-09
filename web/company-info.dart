@@ -11,6 +11,7 @@ class CompanyInfoComponent extends WebComponent {
   String section;
   
   inserted() {
+    // TODO(pavelgj): find a better API for accessing the view.
     parent.xtag.onTokenChange((newToken) {
       print('section new token $newToken');
       if (['info', 'activities', 'notes'].contains(newToken)) {

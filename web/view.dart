@@ -117,6 +117,7 @@ class ViewComponent extends WebComponent {
     propagateTokens([token]);
   }
   
+  // TODO(pavelgj): replace this with a stream.
   void onTokenChange(callback) {
     tokenChangeCallbacks.add(callback);
   }

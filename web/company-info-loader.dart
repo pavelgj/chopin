@@ -9,6 +9,7 @@ class CompanyInfoLoaderComponent extends WebComponent {
   var company;
   
   inserted() {
+    // TODO(pavelgj): find a better API for accessing the view.
     parent.xtag.onTokenChange((newToken) {
       var tkn = parent.xtag.token;
       if (tkn == null) {

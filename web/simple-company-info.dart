@@ -8,6 +8,7 @@ class SimpleCompanyInfoComponent extends WebComponent {
   var company;
   
   inserted() {
+    // TODO(pavelgj): find a better API for accessing the view.
     company = parent.xtag.company;
   }
 }

@@ -36,6 +36,7 @@ class PortfolioComponent extends WebComponent {
   }
 
   inserted() {
+    // TODO(pavelgj): find a better API for accessing the view.
     parent.xtag.onTokenChange((newToken) {
       print('newToken = $newToken');
       if (newToken == null) {
