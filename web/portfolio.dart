@@ -49,14 +49,14 @@ class PortfolioComponent extends WebComponent {
       bool done = false;
       tabs.forEach((tab) {
         if (!done && tab['userValue'] != null && tab['userValue']['id'] == tokenInt) {
-          showTab(tab, null, updateUrl: false, silent: true);
+          showTab(tab, null, updateUrl: false, silent: true, setToken: false);
           done = true;
         }
       });
       if (done) return;
       companies.forEach((c) {
         if (c['id'] == tokenInt) {
-          openCompany(c, null);
+          openCompany(c, null, setToken: false);
           done = true;
         }
       });
@@ -73,7 +73,7 @@ class PortfolioComponent extends WebComponent {
     return expanded == company['id'];
   }
   
-  void openCompany(company, MouseEvent e) {
+  void openCompany(company, MouseEvent e, {setToken: true}) {
     if (e != null) {
       e.preventDefault();
     }
@@ -85,8 +85,10 @@ class PortfolioComponent extends WebComponent {
     activeTab = tabs[tabs.length - 1];
     watchers.dispatch();
     
-    // set new history token...
-    chopin.setToken(this, "${company['id']}", silent: false);
+    if (setToken) {
+      // set new history token...
+      chopin.setToken(this, "${company['id']}", silent: false);
+    }
   }
   
   String activeClass(tab) {
@@ -96,14 +98,16 @@ class PortfolioComponent extends WebComponent {
     return "";
   }
   
-  showTab(tab, e, {updateUrl: true, replace: false, silent: false}) {
+  showTab(tab, e, {updateUrl: true, replace: false, silent: false, setToken: true}) {
     if (e != null) {
       e.preventDefault();
     }
     activeTab = tab;
     watchers.dispatch();
     
-    var tkn = activeTab['userValue'] != null ? "${activeTab['userValue']['id']}" : "home";
-    chopin.setToken(this, tkn, silent: silent, updateUrl: updateUrl, replace: replace);
+    if (setToken) {
+      var tkn = activeTab['userValue'] != null ? "${activeTab['userValue']['id']}" : "home";
+      chopin.setToken(this, tkn, silent: silent, updateUrl: updateUrl, replace: replace);
+    }
   }
 }

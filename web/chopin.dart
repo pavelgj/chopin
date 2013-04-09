@@ -8,6 +8,6 @@ abstract class Config {
   ViewResolver viewResolver;
 }
 
-setToken(WebComponent comp, String value, {silent: false, updateUrl: true, replace: true}) {
+setToken(WebComponent comp, String value, {silent: false, updateUrl: true, replace: false}) {
   comp.parent.xtag.setToken(value, silent: silent, updateUrl: updateUrl, replace: replace);
 }

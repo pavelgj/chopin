@@ -104,12 +104,12 @@ class ViewComponent extends WebComponent {
         p = p.parent;
       }
       stack[stackDepth - 1] = token;
+      var newUrl = '#/' + stack.sublist(0, stackDepth).join('/');
       if (replace) {
-        window.history.replaceState(null, '', '#/' + stack.sublist(0, stackDepth).join('/')); 
+        window.history.replaceState(null, newUrl, newUrl); 
       } else {
-        window.history.pushState(null, '', '#/' + stack.sublist(0, stackDepth).join('/')); 
+        window.history.pushState(null, newUrl, newUrl); 
       }
-      print('set token $stackDepth $token $stack');
     }
     if (silent) {
       return;

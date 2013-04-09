@@ -14,7 +14,7 @@ class CompanyInfoComponent extends WebComponent {
     parent.xtag.onTokenChange((newToken) {
       print('section new token $newToken');
       if (['info', 'activities', 'notes'].contains(newToken)) {
-        showSection(newToken, null, updateUrl: false);
+        showSection(newToken, null, updateUrl: false, replace:true);
       } else {
         showSection('info', null, replace:true);
       }
