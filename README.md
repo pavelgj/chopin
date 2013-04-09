@@ -1,7 +1,8 @@
 # Chopin framework (EXPERIMENTAL)
 > [Chopin](http://en.wikipedia.org/wiki/Fr%C3%A9d%C3%A9ric_Chopin) is pronounced "show-pan".
 
-Chopin is an experimental simple routing, hierarchical deep-linking and view composition framework.
+Chopin is an experimental simple routing, hierarchical deep-linking and view 
+composition framework for [Dart](http://www.dartlang.org/) [web-ui](http://www.dartlang.org/articles/web-ui/).
 
 The idea is that the UI is composed of "views". Each view has a view id and 
 view ids are dynamically resolved to web components by view resolver defined
