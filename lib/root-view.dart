@@ -15,7 +15,6 @@ class RootViewComponent extends WebComponent {
   inserted() {
     window.onPopState.listen((_) {
       var hash = window.location.hash;
-      print('pop state $hash');
       if (hash != null && hash.startsWith('#/')) {
         var viewId = hash.split('/')[1];
         if (currentViewId != viewId) {

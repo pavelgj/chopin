@@ -59,7 +59,6 @@ class ViewComponent extends WebComponent {
   }
   
   propagateTokens(List<String> stack) {
-    print('${viewId} propagateTokens $stack');
     var tail;
     if (stack.length > 0) {
       token = stack[0];
@@ -84,7 +83,6 @@ class ViewComponent extends WebComponent {
   
   setToken(String token, {silent: false, updateUrl: true, replace: false}) {
     this.token = token;
-    print('set $token updateUrl:$updateUrl silent:$silent replace:$replace');
     if (updateUrl) {
       // walk up the tree and count view stack depth.
       var stackDepth = 0;

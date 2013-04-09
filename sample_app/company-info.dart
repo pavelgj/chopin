@@ -12,7 +12,6 @@ class CompanyInfoComponent extends WebComponent {
   
   inserted() {
     chopin.onTokenChange(this, (newToken) {
-      print('section new token $newToken');
       if (['info', 'activities', 'notes'].contains(newToken)) {
         showSection(newToken, null, updateUrl: false, replace:true);
       } else {

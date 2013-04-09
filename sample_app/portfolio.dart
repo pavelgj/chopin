@@ -37,7 +37,6 @@ class PortfolioComponent extends WebComponent {
 
   inserted() {
     chopin.onTokenChange(this, (newToken) {
-      print('newToken = $newToken');
       if (newToken == null) {
         newToken = '';
       }

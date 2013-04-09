@@ -20,20 +20,16 @@ void main() {
 
 class SampleConfig extends chopin.Config {
   chopin.ViewResolver viewResolver = (String viewId, WebComponent target) {
-    print('resolving $viewId');
     if (viewId == 'portfolio') {
       return new PortfolioComponent();
     }
     if (viewId == 'companyInfo') {
       if (target.parentView != null && target.parent is TableCellElement) {
-        print('Resolve simple');
         return new SimpleCompanyInfoComponent();
       }
       if (target.parentView == null) {
-        print('Resolve loader');
         return new CompanyInfoLoaderComponent();
       }
-      print('Resolve full');
       return new CompanyInfoComponent();
     }
     throw new StateError('unable to resolve $viewId');
