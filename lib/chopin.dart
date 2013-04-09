@@ -3,10 +3,8 @@ library chopin;
 import 'dart:html';
 import 'package:web_ui/web_ui.dart';
 
-typedef WebComponent ViewResolver(String viewId, WebComponent target);
-
 abstract class Config {
-  ViewResolver viewResolver;
+  WebComponent viewResolver(String viewId, WebComponent target);
 }
 
 setToken(WebComponent comp, String value, {silent: false, updateUrl: true, replace: false}) {
