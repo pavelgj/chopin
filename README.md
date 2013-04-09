@@ -66,13 +66,14 @@ You can embed views like so
 You can set custom attributes on the views and resolved web components can access those attributes like so:
 
 ```dart
-  // TODO: come up with a nicer API for this.
+  //TODO: come up with a nicer API for this.
   chopin.viewAttributes(this)['myAttribute']
 ```
 
 Each view that's marked as history-bound is also attached to the url.
 
 ```dart
+  //TODO: use streams
   chopin.onTokenChange(this, (newToken) {
     // do something with new token
   });
