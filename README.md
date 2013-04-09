@@ -16,13 +16,13 @@ import 'package:chopin/chopin.dart' as chopin;
 
 class SampleConfig extends chopin.Config {
   WebComponent viewResolver(String viewId, WebComponent target) {
-    if (viewId == 'a') {
+    if (viewId == 'aaa') {
       return new AComponent();
     }
-    if (viewId == 'b') {
+    if (viewId == 'bbb') {
       return new BComponent();
     }
-    if (viewId == 'c') {
+    if (viewId == 'ccc') {
       return new CComponent();
     }
     throw new StateError('unable to resolve $viewId');
@@ -40,7 +40,7 @@ You can embed other views like so
     <link rel="components" href="package:chopin/view.html">
   </head>
   ...
-  <x-view view-id="b" my-attribute="{{myValue}}" history-bound="{{true}}"></x-view>
+  <x-view view-id="bbb" my-attribute="{{myValue}}" history-bound="{{true}}"></x-view>
   ...
 ```
 
@@ -61,9 +61,10 @@ Each view that's marked as history-bound is also attached to the url.
   // set new token for this view
   chopin.setToken(this, 'newToken');
 ```
-For example, a url like this /a/1234/4321 will tell the root view to load view id 'a' 
-and assign history token 1234 to it. If view 'a' contains a sub-view (lets say 'b'), then
-token 4321 will be passed to 'b'. And so on.
+For example, a url like this /aaa/foo/bar will tell the root view to load view id 'aaa' 
+and assign history token 'foo' to it. If view 'aaa' contains a sub-view (lets say 'bbb'), then
+token bar will be passed to 'bbb'. And so on.
 
-If view 'b' would call setToken('5432') then the URL will automatically update to
-/a/1234/5432.
+If view 'bbb' calls setToken('baz') then the URL will automatically update to
+/a/foo/baz. If view 'aaa' setToken('auz') then the URL will automatically update
+to '/a/aux'. Setting history token in the middle of the view stack strips the tail.
