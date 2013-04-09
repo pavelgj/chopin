@@ -5,14 +5,30 @@ Chopin is an experimental simple routing, hierarchical deep-linking and view com
 
 The idea is that the UI is composed of "views". Each view has a view id and 
 view ids are dynamically resolved to web components by view resolver defined
-in the configuration. View can be nested are nested, allowing composition.
+in the configuration. Views can be nested, allowing composition.
+
+    ------------------
+    | A              |
+    | ----- -------- |
+    | |B  | |C     | |
+    | |   | | ---- | |
+    | |   | | |D | | |
+    | ----- | ---- | |
+    |       -------- |
+    -----------------
 
 At the root of all views (the entry point into the view hierarchy) there is 
 a root-view which contains the configuration and also resolves the first view.
 
+```dart
+<x-root-view config="{{config}}" history-bound="{{true}}"></x-root-view>
+```
+
 Sample config:
 ```dart
 import 'package:chopin/chopin.dart' as chopin;
+
+var config = new SampleConfig();
 
 class SampleConfig extends chopin.Config {
   WebComponent viewResolver(String viewId, WebComponent target) {
@@ -32,6 +48,7 @@ class SampleConfig extends chopin.Config {
 
 You can imagine that view id resolution can be much more sophisticated, for
 example, taking into account the logged in user's permissions or preferences.
+Also at this point dependency injection can happen.
 
 You can embed views like so
 
