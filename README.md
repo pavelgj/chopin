@@ -70,12 +70,12 @@ You can set custom attributes on the views and resolved web components can acces
   chopin.viewAttributes(this)['myAttribute']
 ```
 
-Each view that's marked as history-bound is also attached to the url.
+Each view that's marked as history-bound is also "bound" to the url.
 
 ```dart
   //TODO: use streams
   chopin.onTokenChange(this, (newToken) {
-    // do something with new token
+    // intialize/update the component depending on the value of newToken
   });
   
   // set new token for this view
