@@ -3,7 +3,7 @@ library companyinfo;
 import 'package:web_ui/web_ui.dart';
 import 'dart:html';
 import 'package:web_ui/watcher.dart' as watchers;
-import 'chopin.dart' as chopin;
+import 'package:chopin/chopin.dart' as chopin;
 
 class CompanyInfoComponent extends WebComponent {
   
@@ -11,8 +11,7 @@ class CompanyInfoComponent extends WebComponent {
   String section;
   
   inserted() {
-    // TODO(pavelgj): find a better API for accessing the view.
-    parent.xtag.onTokenChange((newToken) {
+    chopin.onTokenChange(this, (newToken) {
       print('section new token $newToken');
       if (['info', 'activities', 'notes'].contains(newToken)) {
         showSection(newToken, null, updateUrl: false, replace:true);
@@ -20,7 +19,7 @@ class CompanyInfoComponent extends WebComponent {
         showSection('info', null, replace:true);
       }
     });
-    company = parent.xtag.company;
+    company = chopin.viewAttributes(this)['company'];
   }
   
   showSection(section, e, {updateUrl: true, replace: false, silent: true}) {
@@ -38,5 +37,4 @@ class CompanyInfoComponent extends WebComponent {
     }
     return "";
   }
-
 }

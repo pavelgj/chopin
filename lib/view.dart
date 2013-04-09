@@ -3,10 +3,8 @@ library chopinview;
 import 'package:web_ui/web_ui.dart';
 import 'dart:html';
 import 'dart:async';
-import 'portfolio.dart';
-import 'chopin.dart';
+import 'package:chopin/chopin.dart';
 import 'root-view.dart';
-import 'company-info.dart';
 
 class ViewComponent extends WebComponent {
   String viewId;
@@ -18,28 +16,30 @@ class ViewComponent extends WebComponent {
   
   Config get config {
     if (_config == null) {
-      var p = parent;
-      while (p != null) {
+      visitParents(this, (p) {
         if (p.tagName == 'X-ROOT-VIEW') {
           _config = p.xtag.config;
-          return _config;
+          return false;
         }
-        p = p.parent;
+        return true;
+      });
+      if (_config == null) {
+        throw new StateError('expected to find X-ROOT-VIEW as one of the ancestors.');
       }
-      throw new StateError('expected to find X-ROOT-VIEW as one of the ancestors.');
     }
     return _config;
   }
   
   ViewComponent get parentView {
-    var p = parent;
-    while (p != null) {
+    var pv = null;
+    visitParents(this, (p) {
       if (p.xtag != null && p.xtag is ViewComponent) {
-        return p.xtag;
+        pv = p.xtag;
+        return false;
       }
-      p = p.parent;
-    }
-    return null;
+      return true;
+    });
+    return pv;
   }
   
   noSuchMethod(InvocationMirror invocation) {
@@ -87,10 +87,9 @@ class ViewComponent extends WebComponent {
     print('set $token updateUrl:$updateUrl silent:$silent replace:$replace');
     if (updateUrl) {
       // walk up the tree and count view stack depth.
-      var p = this;
       var stackDepth = 0;
       var stack = [];
-      while (p != null) {
+      visitParents(this, (p) {
         if (p.xtag != null) {
           if (p.xtag is ViewComponent) {
             stackDepth++;
@@ -101,8 +100,8 @@ class ViewComponent extends WebComponent {
             stack.insert(0, p.xtag.currentViewId);
           }
         }
-        p = p.parent;
-      }
+        return true;
+      }, includeSelf: true);
       stack[stackDepth - 1] = token;
       var newUrl = '#/' + stack.sublist(0, stackDepth).join('/');
       if (replace) {

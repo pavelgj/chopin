@@ -3,5 +3,5 @@ import 'package:web_ui/component_build.dart';
 
 // Ref: http://www.dartlang.org/articles/dart-web-components/tools.html
 main() {
-  build(new Options().arguments, ['web/chopin_experimental.html']);
+  build(new Options().arguments, ['sample_app/chopin_experimental.html']);
 }

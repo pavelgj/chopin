@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'package:web_ui/web_ui.dart';
-import 'chopin.dart';
+import 'package:chopin/chopin.dart' as chopin;
 import 'portfolio.dart';
 import 'company-info.dart';
 import 'company-info-loader.dart';
@@ -18,8 +18,8 @@ void main() {
   //useShadowDom = true;
 }
 
-class SampleConfig extends Config {
-  ViewResolver viewResolver = (String viewId, WebComponent target) {
+class SampleConfig extends chopin.Config {
+  chopin.ViewResolver viewResolver = (String viewId, WebComponent target) {
     print('resolving $viewId');
     if (viewId == 'portfolio') {
       return new PortfolioComponent();

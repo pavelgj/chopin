@@ -1,5 +1,7 @@
 packages/
 .buildlog
 pubspec.lock
-web/out/
-web/packages/
+sample_app/out/
+sample_app/packages/
+.settings
+.DS_Store

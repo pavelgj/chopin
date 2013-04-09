@@ -4,7 +4,7 @@ import 'package:web_ui/web_ui.dart';
 import 'package:web_ui/watcher.dart' as watchers;
 import 'dart:html';
 import 'dart:async';
-import 'chopin.dart' as chopin;
+import 'package:chopin/chopin.dart' as chopin;
 
 class PortfolioComponent extends WebComponent {
   var expandedCompany;
@@ -36,8 +36,7 @@ class PortfolioComponent extends WebComponent {
   }
 
   inserted() {
-    // TODO(pavelgj): find a better API for accessing the view.
-    parent.xtag.onTokenChange((newToken) {
+    chopin.onTokenChange(this, (newToken) {
       print('newToken = $newToken');
       if (newToken == null) {
         newToken = '';

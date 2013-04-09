@@ -2,7 +2,7 @@ library chopinview;
 
 import 'package:web_ui/web_ui.dart';
 import 'dart:html';
-import 'chopin.dart' as chopin;
+import 'package:chopin/chopin.dart' as chopin;
 import 'view.dart';
 
 class RootViewComponent extends WebComponent {

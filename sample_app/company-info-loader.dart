@@ -1,16 +1,16 @@
 library companyinfoloader;
 
 import 'package:web_ui/web_ui.dart';
-import 'dart:html';
 import 'package:web_ui/watcher.dart' as watchers;
+import 'package:chopin/chopin.dart' as chopin;
+import 'dart:html';
 
 class CompanyInfoLoaderComponent extends WebComponent {
   
   var company;
   
   inserted() {
-    // TODO(pavelgj): find a better API for accessing the view.
-    parent.xtag.onTokenChange((newToken) {
+    chopin.onTokenChange(this, (newToken) {
       var tkn = parent.xtag.token;
       if (tkn == null) {
         tkn = '';

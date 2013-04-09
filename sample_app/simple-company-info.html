@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <link rel="components" href="view.html">
-  </head>
   <body>
     <element name="x-simple-company-info" constructor="SimpleCompanyInfoComponent" extends="div">
       <template>
         <template if="company != null">
-          <h2>{{company['name']}}</h2>
+          <h4>{{company['name']}}</h4>
           <p>id: {{company['id']}}</p>
           <p>revenue: {{company['revenue']}}</p>
         </template>
