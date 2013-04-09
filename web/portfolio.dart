@@ -16,12 +16,12 @@ class PortfolioComponent extends WebComponent {
   var companies = [
     {
       'id': 100001,
-      'name': 'Adidas',
+      'name': 'Company 100001',
       'revenue': 3000000.00
     },
     {
-      'id': 100002,
-      'name': 'Nike',
+      'id': 1111111,
+      'name': 'Company 1111111',
       'revenue': 1001100.00
     },
     {
@@ -65,7 +65,11 @@ class PortfolioComponent extends WebComponent {
   }
   
   void expandCompany(company, MouseEvent e) {
-    expanded = company['id'];
+    if (expanded == company['id']) {
+      expanded = null;
+    } else {
+      expanded = company['id'];
+    }
     e.preventDefault();
     watchers.dispatch();
   }
