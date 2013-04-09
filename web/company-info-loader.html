@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="components" href="view.html">
+  </head>
+  <body>
+    <element name="x-company-info-loader" constructor="CompanyInfoLoaderComponent" extends="div">
+      <template>
+        <template if="company != null">
+          <x-view view-id="companyInfo" company="{{company}}" history-bound="{{true}}"></x-view>
+        </template>
+      </template>
+      <script type="application/dart" src="company-info-loader.dart"></script>
+    </element>
+  </body>
+</html>
